@@ -8,16 +8,13 @@ connectDB();
 const server = http.createServer(app);
 const io = socket(server, {
   cors: {
-    origin: "*",
+    origin: "http://10.0.2.2/3007",
     methods: ["GET", "POST"],
   },
 });
 
 io.on("connection", (socket) => {
-  socket.on("username", (username) => {
-    socket.username = username;
-    console.log(`Usuario ${socket.username} logeado`);
-  });
+  console.log(`${socket.id} conectado`);
 
   socket.on("disconnect", () => {
     console.log("User disconnected");

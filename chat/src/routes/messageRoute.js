@@ -4,10 +4,10 @@ const messageService = require("../services/messageService");
 
 router.post("/message", async (req, res) => {
   console.log(req.body);
-  const { chat, senderId, content } = req.body;
+  const { chat, senderID, content } = req.body;
 
   try {
-    const message = await messageService.postMessage(chat, senderId, content);
+    const message = await messageService.postMessage(chat, senderID, content);
     res.status(201).json(message);
   } catch (err) {
     console.error("Error al guardar mensaje", err);

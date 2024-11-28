@@ -1,7 +1,7 @@
 const Message = require("../models/message");
 
-exports.postMessage = async (chat, senderId, content) => {
-  const newMessage = new Message({ chat, senderId, content });
+exports.postMessage = async (chat, senderID, content) => {
+  const newMessage = new Message({ chat, senderID, content });
   await newMessage.save();
 
   return newMessage;
