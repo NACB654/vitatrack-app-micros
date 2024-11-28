@@ -1,13 +1,18 @@
-const express = require('express');
-const cors = require('cors');
-const prueba = require('./routes/prueba');
+const express = require("express");
+const cors = require("cors");
+const messages = require("./routes/messageRoute");
+const chats = require("./routes/chatRoute");
 
 const app = express();
 
-app.use(cors({
+app.use(express.json());
+app.use(
+  cors({
     origin: "*",
-    methods: ["GET", "POST"]
-}))
-app.use("/api", prueba);
+    methods: ["GET", "POST"],
+  }),
+);
+app.use("/api", messages);
+app.use("/api", chats);
 
 module.exports = app;
