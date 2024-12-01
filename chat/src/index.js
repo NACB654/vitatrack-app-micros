@@ -8,7 +8,7 @@ connectDB();
 const server = http.createServer(app);
 const io = socket(server, {
   cors: {
-    origin: "http://10.0.2.2/3007",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
