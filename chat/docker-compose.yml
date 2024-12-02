@@ -12,6 +12,7 @@ services:
       - mongo
     volumes:
       - .:/app
+      - /app/node_modules
     command: "node src/index.js"
 
   mongo:
