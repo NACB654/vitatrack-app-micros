@@ -19,18 +19,26 @@ app.get("/gateway/:id", async (req, res) => {
     const userRequest = axios.post("http://3.139.101.54/profile/me", {
       userId: id,
     });
-    const friendsRequest = axios.post("http://18.191.203.53/amistad/amigos", {
+    const friendsRequest = axios.post("http://3.20.232.88/amistad/amigos", {
       userId: id,
     });
+    const habitsRequest = axios.post(
+      "http://vitatrack-habitos-lb-21903008.us-east-2.elb.amazonaws.com/habito/hoy",
+      {
+        userId: id,
+      },
+    );
 
-    const [userResponse, friendsResponse] = await Promise.all([
+    const [userResponse, friendsResponse, habitsResponse] = await Promise.all([
       userRequest,
       friendsRequest,
+      habitsRequest,
     ]);
 
     const data = {
       user: userResponse?.data,
       friends: friendsResponse?.data,
+      habits: habitsResponse?.data,
     };
 
     res.status(200).json(data);
