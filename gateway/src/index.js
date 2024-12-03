@@ -16,14 +16,20 @@ app.get("/gateway/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    const userRequest = axios.post("http://3.139.101.54/profile/me", {
-      userId: id,
-    });
-    const friendsRequest = axios.post("http://3.20.232.88/amistad/amigos", {
-      userId: id,
-    });
+    const userRequest = axios.post(
+      "https://mu630cisu4.execute-api.us-east-2.amazonaws.com/prod/usuarios/profile/me",
+      {
+        userId: id,
+      },
+    );
+    const friendsRequest = axios.post(
+      "https://mu630cisu4.execute-api.us-east-2.amazonaws.com/prod/amigos/amistad/amigos",
+      {
+        userId: id,
+      },
+    );
     const habitsRequest = axios.post(
-      "http://vitatrack-habitos-lb-21903008.us-east-2.elb.amazonaws.com/habito/hoy",
+      "https://mu630cisu4.execute-api.us-east-2.amazonaws.com/prod/habitos/habito/hoy",
       {
         userId: id,
       },
